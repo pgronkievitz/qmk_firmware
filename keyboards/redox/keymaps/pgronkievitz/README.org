@@ -25,6 +25,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+<<comm>>
+
+<<capsword>>
+
+#define TAPPING_TOGGLE 2
+#+end_src
+
+Define how to communicate between the halves.
+#+name: comm
+#+begin_src c
 /* Use I2C or Serial, not both */
 #define USE_SERIAL
 // #define USE_I2C
@@ -33,10 +43,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
+#+end_src
 
+Caps lock is no more, now caps word is my best friend.
+#+name: capsword
+#+begin_src c
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 2000
-#define TAPPING_TOGGLE 2
 #+end_src
 * Keymap
 #+begin_src c :tangle keymap.c :noweb yes
