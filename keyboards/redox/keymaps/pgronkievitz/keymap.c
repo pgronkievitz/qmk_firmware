@@ -8,9 +8,9 @@ extern keymap_config_t keymap_config;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0 // well, QWERTY
-#define _SYMB 1 // F-keys, symbols and numpad
-#define _NAV 2 // navigation layer (mouse on the right and arrows under hjkl
-#define _MISC 3 // other keys
+#define _SYMB 1   // F-keys, symbols and numpad
+#define _NAV 2    // navigation layer (mouse on the right and arrows under hjkl
+#define _MISC 3   // other keys
 #define _ADJUST 4 // keyboard configuration layer
 
 enum custom_keycodes {
@@ -19,6 +19,7 @@ enum custom_keycodes {
   NAV,
   ADJUST,
 };
+
 
 // Shortcut to make keymap more readable
 #define SYM_L1   TT(_SYMB)
