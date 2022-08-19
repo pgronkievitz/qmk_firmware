@@ -4,6 +4,25 @@
 Highly inspired by nrichers's keymap with modifications that fit to my brain such as space on the right hand side, as my right thumb is the main key for me to press space and making use of AltGr as English is not my native language.
 
 [[./keymap.png]]
+** Pins
+As redox is using Arduino Pro Micro by default, I have to use converter to make it work on my Raspberry Pi Pico - here's table with conversion
+
+| Original | RP2040 | type |
+|----------+--------+------|
+| D4       | GP4    | ROW  |
+| D7       | GP6    | ROW  |
+| E6       | GP7    | ROW  |
+| B4       | GP8    | ROW  |
+| B5       | GP9    | ROW  |
+|----------+--------+------|
+| F5       | GP28   | COL  |
+| F6       | GP27   | COL  |
+| F7       | GP27   | COL  |
+| B1       | GP22   | COL  |
+| B3       | GP20   | COL  |
+| B2       | GP23   | COL  |
+| B6       | GP21   | COL  |
+
 * Config
 #+begin_src c :tangle config.h :noweb yes
 /*
