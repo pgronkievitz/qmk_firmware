@@ -5,7 +5,7 @@ Highly inspired by nrichers's keymap with modifications that fit to my brain suc
 
 [[./keymap.png]]
 * Config
-#+begin_src c :tangle config.h
+#+begin_src c :tangle config.h :noweb yes
 /*
 Copyright 2018 Mattia Dal Ben <matthewdibi@gmail.com>
 
@@ -28,7 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <<comm>>
 
 <<capsword>>
-
 #define TAPPING_TOGGLE 2
 #+end_src
 
