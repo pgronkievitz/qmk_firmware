@@ -289,5 +289,10 @@ I have to /somehow/  change stuff on the keyboard itself, so there's the layer.
 #+end_src
 * Rules
 #+begin_src makefile :tangle rules.mk
+MCU = RP2040
+BOOTLOADER = rp2040
+PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
+SERIAL_DRIVER = vendor
+
 CAPS_WORD_ENABLE = yes
 #+end_src
