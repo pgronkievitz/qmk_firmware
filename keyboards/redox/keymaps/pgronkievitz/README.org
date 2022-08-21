@@ -136,10 +136,6 @@ Some macros to make development easier - change layers, squash keys into one key
 #define KC_ADHO LT(_ADJUST, KC_HOME)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
 
-// audio
-#define KC_VUP KC_KB_VOLUME_UP
-#define KC_VDN KC_KB_VOLUME_DOWN
-#define KC_VMU KC_KB_MUTE
 #+end_src
 
 Basic layout, might change it to somewhat else in the future, but for now that's the only one I know.
