@@ -109,6 +109,8 @@ enum custom_keycodes {
   SYMB,
   NAV,
   ADJUST,
+  LENNY,
+  TABLE,
 };
 
 #+end_src
