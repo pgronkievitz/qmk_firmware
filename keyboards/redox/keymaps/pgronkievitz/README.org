@@ -9,19 +9,19 @@ As redox is using Arduino Pro Micro by default, I have to use converter to make 
 
 | Original | RP2040 | type |
 |----------+--------+------|
-| D4       | GP4    | ROW  |
-| D7       | GP6    | ROW  |
-| E6       | GP7    | ROW  |
-| B4       | GP8    | ROW  |
-| B5       | GP9    | ROW  |
+| D4       | GP4    | ROW0 |
+| D7       | GP6    | ROW1 |
+| E6       | GP7    | ROW2 |
+| B4       | GP8    | ROW3 |
+| B5       | GP9    | ROW5 |
 |----------+--------+------|
-| F5       | GP28   | COL  |
-| F6       | GP27   | COL  |
-| F7       | GP27   | COL  |
-| B1       | GP22   | COL  |
-| B3       | GP20   | COL  |
-| B2       | GP23   | COL  |
-| B6       | GP21   | COL  |
+| F5       | GP28   | COL0 |
+| F6       | GP27   | COL1 |
+| F7       | GP26   | COL2 |
+| B1       | GP22   | COL3 |
+| B3       | GP20   | COL4 |
+| B2       | GP23   | COL5 |
+| B6       | GP21   | COL6 |
 
 * Config
 #+begin_src c :tangle config.h :noweb yes
