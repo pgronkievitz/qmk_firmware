@@ -336,6 +336,9 @@ bool process_record_quantum(keyrecord_t *record) {
 #ifdef PROGRAMMABLE_BUTTON_ENABLE
             process_programmable_button(keycode, record) &&
 #endif
+#ifdef AUTOCORRECT_ENABLE
+            process_autocorrect(keycode, record) &&
+#endif
             true)) {
         return false;
     }
@@ -361,8 +364,10 @@ bool process_record_quantum(keyrecord_t *record) {
 #endif
                 return false;
             case QK_CLEAR_EEPROM:
+#ifdef NO_RESET
                 eeconfig_init();
-#ifndef NO_RESET
+#else
+                eeconfig_disable();
                 soft_reset_keyboard();
 #endif
                 return false;

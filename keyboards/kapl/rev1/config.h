@@ -2,14 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
 
-
-/* USB Device descriptor parameter */
-#define VENDOR_ID       0x4C41 // "LA" Lozyuk Alexander
-#define PRODUCT_ID      0x0001
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    keyzog
-#define PRODUCT         Kapl Keyboard
-
 /* key matrix size */
 /* Rows are doubled up */
 #define MATRIX_ROWS 10
@@ -25,9 +17,6 @@
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
-
-/* Serial settings */
-#define USE_SERIAL
 
 /* serial.c configuration for split keyboard */
 #define SOFT_SERIAL_PIN D2
