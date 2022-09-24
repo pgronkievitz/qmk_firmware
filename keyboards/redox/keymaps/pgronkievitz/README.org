@@ -3,7 +3,6 @@
 * Info
 Highly inspired by nrichers's keymap with modifications that fit to my brain such as space on the right hand side, as my right thumb is the main key for me to press space and making use of AltGr as English is not my native language.
 
-[[./keymap.png]]
 ** Pins
 As redox is using Arduino Pro Micro by default, I have to use converter to make it work on my Raspberry Pi Pico - here's table with conversion
 
