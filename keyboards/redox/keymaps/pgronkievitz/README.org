@@ -108,8 +108,6 @@ enum custom_keycodes {
   SYMB,
   NAV,
   ADJUST,
-  LENNY,
-  TABLE,
 };
 
 #+end_src
@@ -134,22 +132,6 @@ Some macros to make development easier - change layers, squash keys into one key
 // adjust layer
 #define KC_ADHO LT(_ADJUST, KC_HOME)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    switch (keycode) {
-        case LENNY:
-            if (record->event.pressed) {
-                send_unicode_string("( ͡° ͜ʖ ͡°)");
-            }
-            return false;
-        case TABLE:
-            if (record->event.pressed) {
-                send_unicode_string("(ノ°Д°）ノ︵ ┻━┻");
-            }
-            return false;
-    }
-    return true;
-}
 #+end_src
 ** Base layer
 Basic layout, might change it to somewhat else in the future, but for now that's the only one I know.
@@ -248,7 +230,7 @@ Some media management, volume and stuff like that. Rather rarely used, but when 
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
   // ` ~ l2  , 1 !    , 2 @    , 3 #    , 4 $    , 5 %    ,                                             6 ^    , 7 &    , 8 *    , 9 (    , 0 )    , - _    ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-  //         ,LENNY   ,TABLE   ,        ,        ,        ,  l1    ,                            l1    ,        ,VOL DN  ,MUTE    ,VOL UP  ,        ,        ,
+  //         ,        ,        ,        ,        ,        ,  l1    ,                            l1    ,        ,VOL DN  ,MUTE    ,VOL UP  ,        ,        ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
   //         ,        ,        ,        ,        ,        ,   [    ,                             ]    ,        ,PREV    ,play    ,next    ,        ,        ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -271,18 +253,18 @@ Some media management, volume and stuff like that. Rather rarely used, but when 
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,LENNY   ,TABLE   ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,                          _______ ,XXXXXXX ,KC_VOLD ,KC_MUTE ,KC_VOLU ,XXXXXXX ,XXXXXXX ,
+     _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                          _______ ,_______ ,KC_VOLD ,KC_MUTE ,KC_VOLU ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,                          _______ ,XXXXXXX ,KC_MPRV ,KC_MPLY ,KC_MNXT ,XXXXXXX ,XXXXXXX ,
+     _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                          _______ ,_______ ,KC_MPRV ,KC_MPLY ,KC_MNXT ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,_______ ,        _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,        _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,_______ ,        _______ ,_______ ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+     _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,_______ ,        _______ ,_______ ,    _______ ,     _______ ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 #+end_src
 ** Adjust layer
-I have to /somehow/  change stuff on the keyboard itself, so there's the layer.
+I have to /somehow/ change stuff on the keyboard itself, so there's the layer.
 #+name: adjust
 #+begin_src c
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -318,5 +300,4 @@ PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
 SERIAL_DRIVER = vendor
 
 CAPS_WORD_ENABLE = yes
-UNICODE_ENABLE = yes
 #+end_src
