@@ -20,7 +20,7 @@ As redox is using Arduino Pro Micro by default, I have to use converter to make 
 | F7       | GP26   | COL2 |
 | B1       | GP22   | COL3 |
 | B3       | GP20   | COL4 |
-| B2       | GP23   | COL5 |
+| B2       | GP18   | COL5 |
 | B6       | GP21   | COL6 |
 
 * Config
