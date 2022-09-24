@@ -4,4 +4,3 @@ PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
 SERIAL_DRIVER = vendor
 
 CAPS_WORD_ENABLE = yes
-UNICODE_ENABLE = yes
