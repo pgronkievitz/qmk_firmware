@@ -1,6 +1,7 @@
 MCU = RP2040
 BOOTLOADER = rp2040
 PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
+CONVERT_TO = pi_pico
 SERIAL_DRIVER = vendor
 
 CAPS_WORD_ENABLE = yes
