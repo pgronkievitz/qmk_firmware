@@ -8,14 +8,16 @@ extern keymap_config_t keymap_config;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0 // well, QWERTY
-#define _SYMB 1   // F-keys, symbols and numpad
-#define _NAV 2    // navigation layer (mouse on the right and arrows under hjkl
-#define _MISC 3   // other keys
-#define _ADJUST 4 // keyboard configuration layer
-#define _GAME 5 // keyboard configuration layer
+#define _COLEMAKDH 1 // well, Colemak-DH mod
+#define _SYMB 2   // F-keys, symbols and numpad
+#define _NAV 3    // navigation layer (mouse on the right and arrows under hjkl
+#define _MISC 4   // other keys
+#define _ADJUST 5 // keyboard configuration layer
+#define _GAME 6 // keyboard configuration layer
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
+  COLEMAK_DH,
   SYMB,
   NAV,
   ADJUST,
@@ -26,6 +28,7 @@ enum custom_keycodes {
 #define MOUSEKEY_TIME_TO_MAX 50
 #define MOUSEKEY_MOVE_DELTA 6
 // Shortcut to make keymap more readable
+#define SYM_DH TT(_COLEMAKDH)
 #define SYM_L1 TT(_SYMB)
 #define SYM_L2 TT(_NAV)
 #define SYM_L3 TT(_MISC)
@@ -69,7 +72,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_ADPU ,KC_PGDN ,        KC_END  ,KC_ADHO ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_BSLS ,SYM_L4  ,KC_HYPR ,KC_LALT ,     KC_LGUI ,    KC_ENT  ,KC_DEL  ,        KC_BSPC ,KC_SPC  ,    KC_RALT ,     KC_RGUI ,KC_HYPR ,_______ ,SYM_L3
+     KC_BSLS ,SYM_L4  ,KC_HYPR ,KC_LALT ,     KC_LGUI ,    KC_ENT  ,KC_DEL  ,        KC_BSPC ,KC_SPC  ,    KC_RALT ,     KC_RGUI ,KC_HYPR ,SYM_DH  ,SYM_L3
+  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  ),
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+  // ` ~ l2  , 1 !    , 2 @    , 3 #    , 4 $    , 5 %    ,                                             6 ^    , 7 &    , 8 *    , 9 (    , 0 )    , - _    ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+  // tab     ,   q    ,   w    ,   e    ,   r    ,   t    ,  l1    ,                            l1    ,   y    ,   u    ,   i    ,   o    ,   p    , + =    ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+  // ctrl esc,   a    ,   s    ,   d    ,   f    ,   g    ,   [    ,                             ]    ,   h    ,   j    ,   k    ,   l    , : ;    ,ctrl ' ",
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+  //  lshift ,   z    ,   x    ,   c    ,   v    ,   b    ,   adpu ,   pgdn ,           end  ,   adho ,   n    ,   m    ,   comm ,   dot  ,   slsh ,   rsft ,
+  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+  //   \ |   ,_______ ,  hypr  ,  lalt  ,       lgui  ,     enter  ,  del   ,          bspc  ,  spc   ,      ralt  ,       rgui  ,  hypr  ,_______ ,_______
+  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+
+  [_COLEMAKDH] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______ ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B    ,_______ ,                          _______ ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,_______ ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______ ,KC_A    ,KC_R    ,KC_S    ,KC_T    ,KC_G    ,_______ ,                          _______ ,KC_M    ,KC_N    ,KC_E    ,KC_I    ,KC_O    ,_______ ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______ ,KC_Z    ,KC_X    ,KC_C    ,KC_D    ,KC_V    ,_______ ,_______ ,        _______ ,_______ ,KC_K    ,KC_H    ,KC_COMM ,KC_DOT  ,KC_SLSH ,_______ ,
+  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+     _______ ,_______ ,_______ ,_______ ,     _______,     _______ ,_______ ,        _______ ,_______ ,    _______ ,     _______ ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
