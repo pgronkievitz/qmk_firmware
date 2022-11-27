@@ -29,3 +29,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 2000
 #define TAPPING_TOGGLE 2
+#define TAPPING_TERM_PER_KEY

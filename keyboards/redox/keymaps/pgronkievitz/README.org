@@ -47,6 +47,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <<capsword>>
 #define TAPPING_TOGGLE 2
+#define TAPPING_TERM_PER_KEY
 #+end_src
 
 Define how to communicate between the halves.
@@ -78,6 +79,7 @@ extern keymap_config_t keymap_config;
 <<layers>>
 <<keys>>
 
+<<tappingterm>>
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
@@ -145,6 +147,22 @@ Some macros to make development easier - change layers, squash keys into one key
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
 #+end_src
 ** Base layer
+
+#+name: tappingterm
+#+begin_src c
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_CTES:
+        case KC_CTQU:
+            return 220;
+        case KC_NAMI:
+        case KC_NAGR:
+            return 180;
+        default:
+            return TAPPING_TERM;
+    }
+}
+#+end_src
 Basic layout, might change it to somewhat else in the future, but for now that's the only one I know.
 #+name: qwerty
 #+begin_src c

@@ -47,6 +47,18 @@ enum custom_keycodes {
 #define KC_ADHO LT(_ADJUST, KC_HOME)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_CTES:
+        case KC_CTQU:
+            return 220;
+        case KC_NAMI:
+        case KC_NAGR:
+            return 180;
+        default:
+            return TAPPING_TERM;
+    }
+}
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
