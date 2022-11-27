@@ -5,7 +5,7 @@
 #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    LAYOUT_ortho_1x1(JS_BUTTON0)
+    LAYOUT_ortho_1x1(JS_0)
 };
 
 void matrix_scan_user() {
@@ -14,7 +14,7 @@ void matrix_scan_user() {
 }
 
 // Joystick config
-joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
+joystick_config_t joystick_axes[JOYSTICK_AXIS_COUNT] = {
     [0] = JOYSTICK_AXIS_IN(ADC_PIN, 0, 512, 1023),
     [1] = JOYSTICK_AXIS_VIRTUAL
 };

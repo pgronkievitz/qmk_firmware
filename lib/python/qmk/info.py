@@ -451,7 +451,7 @@ def _config_to_json(key_type, config_value):
         if array_type == 'int':
             return list(map(int, config_value.split(',')))
         else:
-            return config_value.split(',')
+            return list(map(str.strip, config_value.split(',')))
 
     elif key_type == 'bool':
         return config_value in true_values
@@ -483,7 +483,7 @@ def _extract_config_h(info_data, config_c):
     """
     # Pull in data from the json map
     dotty_info = dotty(info_data)
-    info_config_map = json_load(Path('data/mappings/info_config.json'))
+    info_config_map = json_load(Path('data/mappings/info_config.hjson'))
 
     for config_key, info_dict in info_config_map.items():
         info_key = info_dict['info_key']
@@ -529,7 +529,7 @@ def _extract_config_h(info_data, config_c):
 def _process_defaults(info_data):
     """Process any additional defaults based on currently discovered information
     """
-    defaults_map = json_load(Path('data/mappings/defaults.json'))
+    defaults_map = json_load(Path('data/mappings/defaults.hjson'))
     for default_type in defaults_map.keys():
         thing_map = defaults_map[default_type]
         if default_type in info_data:
@@ -555,7 +555,7 @@ def _extract_rules_mk(info_data, rules):
 
     # Pull in data from the json map
     dotty_info = dotty(info_data)
-    info_rules_map = json_load(Path('data/mappings/info_rules.json'))
+    info_rules_map = json_load(Path('data/mappings/info_rules.hjson'))
 
     for rules_key, info_dict in info_rules_map.items():
         info_key = info_dict['info_key']
@@ -760,7 +760,7 @@ def avr_processor_rules(info_data, rules):
     """
     info_data['processor_type'] = 'avr'
     info_data['platform'] = rules['ARCH'] if 'ARCH' in rules else 'unknown'
-    info_data['protocol'] = 'V-USB' if rules.get('MCU') in VUSB_PROCESSORS else 'LUFA'
+    info_data['protocol'] = 'V-USB' if info_data['processor'] in VUSB_PROCESSORS else 'LUFA'
 
     # FIXME(fauxpark/anyone): Eventually we should detect the protocol by looking at PROTOCOL inherited from mcu_selection.mk:
     # info_data['protocol'] = 'V-USB' if rules.get('PROTOCOL') == 'VUSB' else 'LUFA'
