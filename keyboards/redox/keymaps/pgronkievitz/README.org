@@ -120,8 +120,8 @@ Definitions of my layers, definitely will grow over time.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _MTGAP 0 // well, mtgap
-#define _QWERTY 1 // well, QWERTY
+#define _MTGAP 1 // well, mtgap
+#define _QWERTY 0 // well, QWERTY
 #define _SYMB 2   // F-keys, symbols and numpad
 #define _NAV 3    // navigation layer (mouse on the right and arrows under hjkl
 #define _MISC 4   // other keys
@@ -129,8 +129,8 @@ Definitions of my layers, definitely will grow over time.
 #define _GAME 6 // keyboard configuration layer
 
 enum custom_keycodes {
-  MTGAP_KC = SAFE_RANGE,
-  QWERTY,
+  QWERTY = SAFE_RANGE,
+  MTGAP_KC,
   SYMB,
   NAV,
   ADJUST,
