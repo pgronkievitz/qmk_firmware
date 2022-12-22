@@ -3,12 +3,27 @@
 
 extern keymap_config_t keymap_config;
 
+enum combos {
+    JK_ESC,
+    CV_C_C,
+    XC_M_X,
+};
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [JK_ESC] = COMBO(jk_combo, KC_ESC),
+  [XC_M_X] = COMBO(xc_combo, LALT(KC_X)),
+  [CV_C_C] = COMBO(cv_combo, LCTL(KC_C)),
+};
+
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _MTGAP 0 // well, mtgap
-#define _QWERTY 1 // well, QWERTY
+#define _MTGAP 1 // well, mtgap
+#define _QWERTY 0 // well, QWERTY
 #define _SYMB 2   // F-keys, symbols and numpad
 #define _NAV 3    // navigation layer (mouse on the right and arrows under hjkl
 #define _MISC 4   // other keys
@@ -16,8 +31,8 @@ extern keymap_config_t keymap_config;
 #define _GAME 6 // keyboard configuration layer
 
 enum custom_keycodes {
-  MTGAP_KC = SAFE_RANGE,
-  QWERTY,
+  QWERTY = SAFE_RANGE,
+  MTGAP_KC,
   SYMB,
   NAV,
   ADJUST,
@@ -133,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,KC_HASH ,KC_DLR  ,KC_LPRN ,KC_RPRN ,KC_UNDS ,_______ ,                          _______ ,XXXXXXX ,KC_KP_4 ,KC_KP_5 ,KC_KP_6 ,KC_PPLS ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_PERC ,KC_CIRC ,KC_LBRC ,KC_RBRC ,KC_TILD ,_______ ,_______ ,        _______ ,_______ ,XXXXXXX ,KC_KP_1 ,KC_KP_2 ,KC_KP_3 ,KC_PAST ,XXXXXXX ,
+     _______ ,KC_PERC ,KC_BSLS ,KC_LBRC ,KC_RBRC ,KC_TILD ,_______ ,_______ ,        _______ ,_______ ,XXXXXXX ,KC_KP_1 ,KC_KP_2 ,KC_KP_3 ,KC_PAST ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
      _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,_______ ,        _______ ,_______ ,    KC_KP_0 ,     KC_KP_0 ,KC_PDOT ,KC_PSLS ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘

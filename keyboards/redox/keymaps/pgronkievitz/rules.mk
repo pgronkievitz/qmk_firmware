@@ -5,3 +5,4 @@ CONVERT_TO = pi_pico
 SERIAL_DRIVER = vendor
 
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes

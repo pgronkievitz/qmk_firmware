@@ -48,6 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <<capsword>>
 #define TAPPING_TOGGLE 2
 #define TAPPING_TERM_PER_KEY
+#define COMBO_COUNT 3
 #+end_src
 
 Define how to communicate between the halves.
@@ -76,6 +77,7 @@ Caps lock is no more, now caps word is my best friend.
 
 extern keymap_config_t keymap_config;
 
+<<combos>>
 <<layers>>
 <<keys>>
 
@@ -93,7 +95,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 #+end_src
+#+name: combos
+#+begin_src c
+enum combos {
+    JK_ESC,
+    CV_C_C,
+    XC_M_X,
+};
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 
+combo_t key_combos[COMBO_COUNT] = {
+  [JK_ESC] = COMBO(jk_combo, KC_ESC),
+  [XC_M_X] = COMBO(xc_combo, LALT(KC_X)),
+  [CV_C_C] = COMBO(cv_combo, LCTL(KC_C)),
+};
+
+#+end_src
 Definitions of my layers, definitely will grow over time.
 #+name: layers
 #+begin_src c
@@ -379,4 +398,5 @@ CONVERT_TO = pi_pico
 SERIAL_DRIVER = vendor
 
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
 #+end_src
